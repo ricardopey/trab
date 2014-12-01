@@ -1,0 +1,28 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Enterprise:</strong>
+  <%= @job.enterprise %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @job.description %>
+</p>
+
+<%= link_to 'Edit', edit_job_path(@job) %> |
+<%= link_to 'Back', jobs_path %>
+
+<h2>Comments</h2>
+ <div id="comments">
+         <%= render :partial => @job.comments %>
+ </div>
+ 
+
+ <%= form_for [@job, Comment.new] do |f| %>
+        <p>
+                <%= f.label :description, "New comment" %><br/>
+                <%= f.text_area :description %>
+        </p>
+        <p><%= f.submit "Add comment" %></p>
+<% end %>
